@@ -1,0 +1,26 @@
+{
+  "name": "booktitlegetter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ericblade/quagga2": "^1.4.2",
+    "@types/config": "^0.0.41",
+    "@types/node": "^17.0.8",
+    "@types/yargs": "^17.0.8",
+    "axios": "^0.24.0",
+    "canvas": "^2.8.0",
+    "config": "^3.3.6",
+    "pdfjs-dist": "^2.12.313",
+    "ts-node": "^10.4.0",
+    "yargs": "^17.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}
