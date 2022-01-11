@@ -2,7 +2,7 @@ import 'pdfjs-dist/legacy/build/pdf.js';
 import { PDFDocumentProxy, getDocument } from "pdfjs-dist"
 import { createCanvas } from 'canvas'
 import { PdfConvert } from "./types"
-import { TypedArray } from 'pdfjs-dist/types/src/display/api';
+import { GetViewportParameters, TypedArray } from 'pdfjs-dist/types/src/display/api';
 
 export class Pdf2Image {
     static async open(data: TypedArray) {
@@ -32,6 +32,21 @@ export class Pdf2Image {
         const canvas = createCanvas(viewport.width, viewport.height / 5) //ページの上部20%までにISBNはあるものと仮定
         const canvasContext = canvas.getContext('2d');
         canvas.height = viewport.height / 5; //ページの上部20%までにISBNはあるものと仮定
+        canvas.width = viewport.width;
+
+        const renderContext = {
+            canvasContext,
+            viewport,
+        };
+        await page.render(renderContext).promise;
+        return canvas.toDataURL();
+    }
+    public async getCoverImageDataUrl(pageNo: number, option: GetViewportParameters ) {
+        const page = await this._pdfDoc.getPage(pageNo);
+        const viewport = page.getViewport(option);
+        const canvas = createCanvas(viewport.width, viewport.height) //ページの上部20%までにISBNはあるものと仮定
+        const canvasContext = canvas.getContext('2d');
+        canvas.height = viewport.height; //ページの上部20%までにISBNはあるものと仮定
         canvas.width = viewport.width;
 
         const renderContext = {
