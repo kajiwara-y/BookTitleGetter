@@ -105,4 +105,12 @@ export namespace PdfConvert{
       scale: number;
     };
   }
+  export namespace separateCover {
+    export type bookSizeRate = {
+      backRate: number;
+      coverRate: number;
+      flapRate: number;
+    }
+  }
+
 }

@@ -144,3 +144,4 @@ dist
 sample
 config/default.json
 dist
+config/test.json
